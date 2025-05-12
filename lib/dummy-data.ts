@@ -1,7 +1,7 @@
 import type { AqiData } from "./types"
 
 export const dummyAqiData: AqiData = {
-  location: "San Francisco, CA (Fallback)",
+  location: "Kolkata, WB (fallback)",
   current: {
     value: 42,
     timestamp: new Date().toISOString(),
