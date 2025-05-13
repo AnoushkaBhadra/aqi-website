@@ -58,9 +58,9 @@ export default function AqiDashboard() {
         </Alert>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+      <div className="flex justify-center items-center gap-6">
         {loading ? (
-          Array(3)
+          Array(1)
             .fill(0)
             .map((_, i) => (
               <div key={i} className="bg-white rounded-xl shadow-md p-6 h-64 animate-pulse">
