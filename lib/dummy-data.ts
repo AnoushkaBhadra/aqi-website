@@ -6,10 +6,10 @@ export const dummyAqiData: AqiData = {
     value: 42,
     timestamp: new Date().toISOString(),
   },
-  pm25: {
-    value: 12,
-  },
-  pm10: {
-    value: 25,
-  },
+  // pm25: {
+  //   value: 12,
+  // },
+  // pm10: {
+  //   value: 25,
+  // },
 }
