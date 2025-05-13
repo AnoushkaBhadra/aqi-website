@@ -49,7 +49,6 @@ export default function AqiDashboard() {
           Refresh Data
         </Button>
       </div>
-
       {error && (
         <Alert variant="destructive">
           <AlertCircle className="h-4 w-4" />
@@ -57,31 +56,24 @@ export default function AqiDashboard() {
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
-
-      <div className="flex justify-center items-center gap-6">
+      <div className="flex justify-center items-center w-full">
         {loading ? (
-          Array(1)
-            .fill(0)
-            .map((_, i) => (
-              <div key={i} className="bg-white rounded-xl shadow-md p-6 h-64 animate-pulse">
-                <div className="h-6 bg-gray-200 rounded w-3/4 mb-4"></div>
-                <div className="h-24 bg-gray-200 rounded mb-4"></div>
-                <div className="h-6 bg-gray-200 rounded w-1/2"></div>
-              </div>
-            ))
+          <div className="bg-white rounded-xl shadow-md p-6 h-64 animate-pulse max-w-md w-full">
+            <div className="h-6 bg-gray-200 rounded w-3/4 mb-4"></div>
+            <div className="h-24 bg-gray-200 rounded mb-4"></div>
+            <div className="h-6 bg-gray-200 rounded w-1/2"></div>
+          </div>
         ) : aqiData ? (
-          <>
+          <div className="flex justify-center w-full max-w-md">
             <AqiCard
               title="Current AQI"
               value={aqiData.current.value}
               location={aqiData.location}
               timestamp={aqiData.current.timestamp}
             />
-{/*             <AqiCard title="PM2.5 Level" value={aqiData.pm25.value} unit="μg/m³" location={aqiData.location} />
-            <AqiCard title="PM10 Level" value={aqiData.pm10.value} unit="μg/m³" location={aqiData.location} /> */}
-          </>
+          </div>
         ) : (
-          <div className="col-span-full text-center py-12">
+          <div className="text-center py-12">
             <p className="text-gray-500">No data available</p>
           </div>
         )}
