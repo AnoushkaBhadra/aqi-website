@@ -77,8 +77,8 @@ export default function AqiDashboard() {
               location={aqiData.location}
               timestamp={aqiData.current.timestamp}
             />
-            <AqiCard title="PM2.5 Level" value={aqiData.pm25.value} unit="μg/m³" location={aqiData.location} />
-            <AqiCard title="PM10 Level" value={aqiData.pm10.value} unit="μg/m³" location={aqiData.location} />
+{/*             <AqiCard title="PM2.5 Level" value={aqiData.pm25.value} unit="μg/m³" location={aqiData.location} />
+            <AqiCard title="PM10 Level" value={aqiData.pm10.value} unit="μg/m³" location={aqiData.location} /> */}
           </>
         ) : (
           <div className="col-span-full text-center py-12">
