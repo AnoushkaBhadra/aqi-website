@@ -16,7 +16,7 @@ try {
       value: data.aqi,
       timestamp: data.timestamp || new Date().toISOString(),
     },
-    // Don't needs these anymore~
+    // Don't need these anymore~
     pm25: { value: 0 },
     pm10: { value: 0 },
   };
