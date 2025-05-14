@@ -33,15 +33,15 @@ try:
             
             if len(current_data) == 9:
                 
-                cursor.execute("SELECT COUNT(*) FROM aqi_data")
+                cursor.execute("SELECT COUNT(*) FROM aqi_readings")
                 count = cursor.fetchone()[0]
 
                 if count >= 24:
-                    cursor.execute("DELETE FROM aqi_data WHERE id = (SELECT id FROM aqi_data ORDER BY id LIMIT 1)")
+                    cursor.execute("DELETE FROM aqi_readings WHERE id = (SELECT id FROM aqi_readings ORDER BY id LIMIT 1)")
 
                 
                 cursor.execute("""
-                    INSERT INTO aqi_data (NO, NO2, NOx, NH3, CO, Benzene, Toluene, Xylene, AQI)
+                    INSERT INTO aqi_readings (NO, NO2, NOx, NH3, CO, Benzene, Toluene, Xylene, AQI)
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """, (
                     current_data["NO"],
