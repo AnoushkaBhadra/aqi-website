@@ -45,10 +45,30 @@ const aqiBadgeVariants = cva("transition-all duration-500 ease-in-out", {
   },
 })
 
+function getAqiEmojiAndMessage(aqi: number) {
+  if (aqi <= 50) {
+    return {
+      emoji: "😄",
+      message: "Air quality is considered satisfactory and poses little or no risk.",
+    }
+  } else if (aqi <= 100) {
+    return {
+      emoji: "😑",
+      message: "Air quality is acceptable; however, there may be a risk for sensitive individuals.",
+    }
+  } else {
+    return {
+      emoji: "😷",
+      message: "Everyone may experience health effects; sensitive groups may experience more serious effects.",
+    }
+  }
+}
+
 export default function AqiCard({ title, value, unit = "", location, timestamp }: AqiCardProps) {
   const [animate, setAnimate] = useState(false)
   const category = getAqiCategory(value)
   const bgColor = getAqiColor(value, 0.1)
+  const { emoji, message } = getAqiEmojiAndMessage(value)
 
   useEffect(() => {
     setAnimate(true)
@@ -65,7 +85,7 @@ export default function AqiCard({ title, value, unit = "", location, timestamp }
 
       <CardHeader className="relative">
         <CardTitle className="flex justify-between items-center">
-          <span>{title}</span>
+          <span>{title} {emoji}</span>
           <Badge variant="outline" className={cn(aqiBadgeVariants({ category }))}>
             {category === "good" && <CheckCircle className="h-3 w-3 mr-1" />}
             {category === "moderate" && <AlertTriangle className="h-3 w-3 mr-1" />}
@@ -80,6 +100,7 @@ export default function AqiCard({ title, value, unit = "", location, timestamp }
           {value}
           <span className="text-base font-normal text-gray-500">{unit}</span>
         </div>
+        <p className="text-sm text-gray-600 mt-2">{message}</p>
       </CardContent>
 
       <CardFooter className="relative text-sm text-gray-500 flex flex-col items-start gap-1">
