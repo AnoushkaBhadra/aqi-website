@@ -15,3 +15,5 @@ export interface AqiData {
     value: number;
   };
 }
+export type AqiCategory = "good" | "moderate" | "unhealthy"
+
