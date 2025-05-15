@@ -1,15 +1,19 @@
 export interface AqiData {
-  location: string
+  location: string;
   current: {
-    value: number
-    timestamp: string
-  }
+    value: number;
+    timestamp: string;
+  };
+  predicted: {
+    value: number;
+    timestamp: string;
+  };
   pm25: {
-    value: number
-  }
+    value: number;
+  };
   pm10: {
-    value: number
-  }
+    value: number;
+  };
 }
-
 export type AqiCategory = "good" | "moderate" | "unhealthy"
+
