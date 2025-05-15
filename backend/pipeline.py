@@ -36,7 +36,7 @@ try:
                 cursor.execute("SELECT COUNT(*) FROM aqi_readings")
                 count = cursor.fetchone()[0]
 
-                if count >= 24:
+                if count >= 5040:
                     cursor.execute("DELETE FROM aqi_readings WHERE id = (SELECT id FROM aqi_readings ORDER BY id LIMIT 1)")
 
                 
@@ -55,7 +55,7 @@ try:
                     current_data["AQI"]
                 ))
                 conn.commit()
-                print("New data inserted. Total rows maintained: 24")
+                print("New data inserted. Total rows maintained: ")
                 current_data.clear()  
 
         except ValueError:
